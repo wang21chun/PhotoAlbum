@@ -3,11 +3,32 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/style/bootstrap.min.css' />
-    <link rel='stylesheet' href='/style/index.css' />
+    <link rel='stylesheet' href='/style/index.min.css' />
   </head>
   <body>
+  	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="#" class="navbar-brand hidden-sm"><%= title%></a>
+        </div>
+        <nav class="collapse navbar-collapse" id="bs-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cog"></span></a></li>
+      </ul>
+    </nav>
+      </div>
+    </div>
 
-  	<h1><%= title %></h1>
+    <div class="photo-body masthead">
+      
+
+<div class="row">
+  <div class="col-xs-4 col-sm-4"><img src="http://pica.nipic.com/2008-01-09/200819134250665_2.jpg" class="img-thumbnail" alt="Responsive image"></div>
+  <div class="col-xs-4 col-sm-4"><img src="http://pic13.nipic.com/20110415/1347158_132411659346_2.jpg" class="img-thumbnail" alt="Responsive image"></div>
+  <div class="col-xs-4 col-sm-4"><img src="http://img.taopic.com/uploads/allimg/130501/240451-13050106450911.jpg" class="img-thumbnail" alt="Responsive image"></div>
+
+</div>
+    </div>
     
     <script src="js/jquery.min.js"></script>
     <script src="js/index.min.js"></script>

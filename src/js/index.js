@@ -1,6 +1,4 @@
 
 (function(){
-	console.log("fdsafaf");
-
-
+	
 })();
