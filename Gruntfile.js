@@ -35,17 +35,22 @@ module.exports = function(grunt) {
                     dest: 'public/style/',
                     flatten: true,
                     filter: 'isFile'
-                },
-                {
+                }, {
                     expand: true,
                     cwd: 'node_modules/bootstrap/dist/fonts',
                     src: '**',
                     dest: 'public/fonts',
                     flatten: true,
                     filter: 'isFile'
+                }, {
+                    expand: true,
+                    cwd: 'node_modules/vue/dist',
+                    src: 'vue.min.js',
+                    dest: 'public/js',
+                    flatten: true,
+                    filter: 'isFile'
                 }],
             }
-
         },
         cssmin: { //css文件压缩  
             css: {
@@ -63,6 +68,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-css');
 
     // 默认被执行的任务列表。
-    grunt.registerTask('default', ['copy', 'uglify','cssmin']);
+    grunt.registerTask('default', ['copy', 'uglify', 'cssmin']);
 
 };
