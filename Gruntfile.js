@@ -49,6 +49,13 @@ module.exports = function(grunt) {
                     dest: 'public/js',
                     flatten: true,
                     filter: 'isFile'
+                }, {
+                    expand: true,
+                    cwd: 'node_modules/jquery-form',
+                    src: 'jquery.form.js',
+                    dest: 'public/js',
+                    flatten: true,
+                    filter: 'isFile'
                 }],
             }
         },
