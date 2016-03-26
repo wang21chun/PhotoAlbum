@@ -1,3 +1,17 @@
 .photo-body{
 	padding:55px 10px 0px 10px;
 }
+.upload-label{
+	position: relative;
+}
+.upload-img{
+	background-color: #5bc0de;
+    border-radius: 0 0 6px 6px;
+    bottom: 0;
+    display: inline-block;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: #FFF;
+}

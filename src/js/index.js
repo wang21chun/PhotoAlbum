@@ -1,5 +1,26 @@
 'use strict';
 (function($, Vue) {
+
+    function UploadImage(options) {
+        this.options = options;
+        this.progressall = undefined;
+    }
+    UploadImage.prototype = {
+        init: function() {
+            this.progressall = $(this.options.progressall);
+            return this;
+        },
+        setValue: function(number) {
+            var cs = { "height": number + "%" };
+            if (number >= 100) {
+                cs['border-radius'] = "6px";
+                cs['height'] = number + "%";
+            }
+            this.progressall.css(cs);
+            this.progressall.text(number + "%");
+        }
+    }
+
     var vm = new Vue({
         el: '#photo-wall',
         data: {
@@ -35,9 +56,26 @@
         data: {},
         methods: {
             upload: function() {
-                $("#upload-form").ajaxSubmit({
-                    success: function(data) {
-
+                var uploadImage = new UploadImage({
+                    progressall: "#upload-img"
+                }).init();
+                var $_uf = $('#upload-file');
+                var url = "/upload";
+                $_uf.fileupload({
+                    url: url,
+                    dataType: 'json',
+                    autoUpload: true,
+                    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+                    done: function(e, data) {
+                        console.log("result", data.result);
+                    },
+                    progressall: function(e, data) {
+                        var progress = parseInt(data.loaded / data.total * 100, 10);
+                        console.log("progress", progress);
+                        // uploadImage.setValue(progress);
+                    },
+                    send: function(e, data) {
+                        console.log("data", data, e);
                     }
                 })
             },
@@ -46,4 +84,7 @@
             }
         }
     });
+    uploadVm.upload();
+
+
 })(jQuery, Vue);

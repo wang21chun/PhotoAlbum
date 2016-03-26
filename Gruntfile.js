@@ -56,6 +56,20 @@ module.exports = function(grunt) {
                     dest: 'public/js',
                     flatten: true,
                     filter: 'isFile'
+                }, {
+                    expand: true,
+                    cwd: 'node_modules/blueimp-file-upload/js',
+                    src: 'jquery.fileupload.js',
+                    dest: 'public/js',
+                    flatten: true,
+                    filter: 'isFile'
+                },{
+                    expand: true,
+                    cwd: 'node_modules/blueimp-file-upload/js/vendor',
+                    src: 'jquery.ui.widget.js',
+                    dest: 'public/js',
+                    flatten: true,
+                    filter: 'isFile'
                 }],
             }
         },
