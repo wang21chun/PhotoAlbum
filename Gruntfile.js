@@ -59,6 +59,17 @@ module.exports = function(grunt) {
                 }],
             }
         },
+        watch: {
+            css:{
+                files: ['src/css/*.css'],
+                tasks: ['cssmin']
+            },
+            scriopts: {
+                files: ['src/js/*.js'],
+                tasks: ['uglify']
+            }
+
+        },
         cssmin: { //css文件压缩  
             css: {
                 src: 'src/css/index.css', //将之前的all.css  
@@ -71,6 +82,7 @@ module.exports = function(grunt) {
     // 加载包含 "uglify" 任务的插件。
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-css');
 
