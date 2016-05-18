@@ -71,8 +71,7 @@
                     },
                     progressall: function(e, data) {
                         var progress = parseInt(data.loaded / data.total * 100, 10);
-                        console.log("progress", progress);
-                        // uploadImage.setValue(progress);
+                         uploadImage.setValue(progress);
                     },
                     send: function(e, data) {
                         console.log("data", data, e);
