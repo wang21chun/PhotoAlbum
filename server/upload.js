@@ -11,45 +11,41 @@ module.exports = function(req, res, dao, cb) {
     var form = new multiparty.Form();
     form.parse(req, function(err, fields, files) {
         if (err) throw err;
-        getData(files.uploadFile[0].path, function(data){
+        getData(files.uploadFile[0].path, function(data) {
             var singName = utile.SignMD5(data);
-            var result = { code: 200, msg: "SUCCESS", url: "" };
+            var result = {
+                code: 200,
+                msg: "SUCCESS",
+                url: ""
+            };
             console.log(imgs.indexOf(singName))
-            if(imgs.indexOf(singName) == -1){
+            if (-1 == imgs.indexOf(singName)) {
                 imgs.push(singName);
                 var info = imageinfo(data);
-                singName += "."+info.format;
+                singName += "." + info.format;
                 saveData(data, singName);
                 result.url = singName;
                 dao.push(result);
             }
             cb(result);
-        })
-
-        /*cpFile(files.uploadFile[0].path, function(result) {
-            if (200 == result.code) {
-                var imginfo = { "name": "", "url": "" };
-                imginfo.name = "";
-                imginfo.url = result.url;
-                dao.push(imginfo);
-            }
-            cb(result);
-        });*/
+        });
     });
 };
 
 /*
 获取图片二进制数据
 */
-function getData(filePath, cb){
+function getData(filePath, cb) {
     fs.readFile(filePath, function(err, data) {
         if (err) throw err;
         cb(data);
     });
 }
 
-function saveData(data, name){
-    fs.writeFile(path.join(basePath, name), data, { encoding: "utf8" }, function(err) {
+function saveData(data, name) {
+    fs.writeFile(path.join(basePath, name), data, {
+        encoding: "utf8"
+    }, function(err) {
         if (err) throw err;
     });
 }
