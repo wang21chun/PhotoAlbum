@@ -1,7 +1,9 @@
+
 var crypto = require('crypto');
 
 module.exports = {
 	SignMD5:function(data){
+		'use strict';
 		var buf;
 		if(Buffer.isBuffer(data)){
 			var size = data.length;

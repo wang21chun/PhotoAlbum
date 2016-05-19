@@ -1,5 +1,5 @@
-'use strict';
 (function($, Vue) {
+'use strict';
 
     function UploadImage(options) {
         this.options = options;
@@ -14,12 +14,12 @@
             var cs = { "height": number + "%" };
             if (number >= 100) {
                 cs['border-radius'] = "6px";
-                cs['height'] = number + "%";
+                cs.height = number + "%";
             }
             this.progressall.css(cs);
             this.progressall.text(number + "%");
         }
-    }
+    };
 
     var vm = new Vue({
         el: '#photo-wall',
@@ -76,7 +76,7 @@
                     send: function(e, data) {
                         console.log("data", data, e);
                     }
-                })
+                });
             },
             reflash: function() {
                 vm.getData();

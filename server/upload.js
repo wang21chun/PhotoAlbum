@@ -1,3 +1,4 @@
+
 var multiparty = require('multiparty');
 var fs = require('fs');
 var imageinfo = require('imageinfo');
@@ -8,6 +9,7 @@ var optioins = {};
 var imgs = [];
 
 module.exports = function(req, res, dao, cb) {
+    'use strict';
     var form = new multiparty.Form();
     form.parse(req, function(err, fields, files) {
         if (err) throw err;
@@ -18,7 +20,6 @@ module.exports = function(req, res, dao, cb) {
                 msg: "SUCCESS",
                 url: ""
             };
-            console.log(imgs.indexOf(singName))
             if (-1 == imgs.indexOf(singName)) {
                 imgs.push(singName);
                 var info = imageinfo(data);
@@ -49,27 +50,3 @@ function saveData(data, name) {
         if (err) throw err;
     });
 }
-
-/*function cpFile(filePath, cb) {
-    var basePath = path.join(process.cwd(), "public/photo/");
-    var basePathThumbnail = path.join(process.cwd(), "public/thumbnail/");
-    var result = { code: 200, msg: "SUCCESS", url: "" };
-    fs.readFile(filePath, function(err, data) {
-        if (err) throw err;
-        var info = imageinfo(data);
-        if (info) {
-            var name = crypto.createHash('md5').update(data.toString()).digest("hex");
-            name += "." + info.format;
-            fs.writeFile(path.join(basePath, name), data, { encoding: "utf8" }, function(err) {
-                if (err) throw err;
-                result.url = name;
-                cb(result);
-            });
-        } else {
-            result.code = 500;
-            result.msg = "File Type ERROR";
-            cb(result);
-        }
-    });
-
-}*/
